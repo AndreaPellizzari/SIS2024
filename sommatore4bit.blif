@@ -8,6 +8,6 @@
 .subckt somma a=a2 b=b2 cin=c1 s=s2 cout=c2
 .subckt somma a=a3 b=b3 cin=c2 s=s3 cout=cout
 
-.search somma.blif
+.search sommatore1bit.blif
 .search zero.blif
 .end
