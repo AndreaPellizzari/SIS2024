@@ -1,7 +1,7 @@
 # SIS024
 ## Componenti necessari
-- Registro 5 bit **Fatto** (controllare 'output')
-- Registro 2 bit **Fatto** (controllare 'output')
+- Registro 5 bit
+- Registro 2 bit
 - Sommatore 5 bit **Fatto**
 - Sommatore 4 bit **Fatto**
 - Multiplexer 2 ingressi 
