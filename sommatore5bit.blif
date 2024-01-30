@@ -1,0 +1,14 @@
+.model somma4bit
+.inputs a4 a3 a2 a1 a0 b4 b3 b2 b1 b0
+.outputs cout s4 s3 s2 s1 s0
+
+.subckt zero o=Z 
+.subckt somma a=a0 b=b0 cin=Z s=s0 cout=c0
+.subckt somma a=a1 b=b1 cin=c0 s=s1 cout=c1
+.subckt somma a=a2 b=b2 cin=c1 s=s2 cout=c2
+.subckt somma a=a3 b=b3 cin=c2 s=s3 cout=c3
+.subckt somma a=a4 b=b4 cin=c3 s=s4 cout=cout
+
+.search somma.blif
+.search zero.blif
+.end
