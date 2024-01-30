@@ -1,7 +1,7 @@
 .model registro2
-.inputs A1 A0
-.outputs O1 O0
-.subckt registro A=A1 O=O1
-.subckt registro A=A0 O=O0
+.inputs a1 a0
+.outputs o1 o0
+.subckt registro a=A1 o=o1
+.subckt registro a=A0 o=o0
 .search registro.blif
 .end

@@ -1,9 +1,10 @@
-.model registro4
-.inputs A3 A2 A1 A0
-.outputs O3 O2 O1 O0
-.subckt registro A=A3 O=O3
-.subckt registro A=A2 O=O2
-.subckt registro A=A1 O=O1
-.subckt registro A=A0 O=O0
+.model registro5
+.inputs a4 a3 a2 a1 a0
+.outputs o4 o3 o2 o1 o0
+.subckt registro a=a4 o=o4
+.subckt registro a=a3 o=o3
+.subckt registro a=a2 o=o2
+.subckt registro a=a1 o=o1
+.subckt registro a=a0 o=o0
 .search registro.blif
 .end
