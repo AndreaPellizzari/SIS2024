@@ -1,6 +1,6 @@
 # SIS024
 ## Componenti necessari
-- Registro 5 bit
+- Registro 5 bit dfhdfgh
 - Registro 2 bit
 - Sommatore 5 bit **Fatto**
 - Sommatore 4 bit **Fatto**
