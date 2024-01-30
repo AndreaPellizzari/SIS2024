@@ -7,6 +7,6 @@
 - Multiplexer 2 ingressi
 - Multiplexer 4 ingressi
 - Demultiplexer 2 uscite
-- >
+- ">"
 - =
 - Shifter 2 posizioni left
