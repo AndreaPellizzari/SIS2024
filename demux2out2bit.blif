@@ -1,0 +1,15 @@
+.model demux2out2bit
+.inputs s a1 a0
+.outputs x1 x0 y1 y0
+.names s a1 a0 x1 x0
+000 00
+001 01
+010 10
+011 11
+.names s a1 a0 y1 y0
+100 00
+101 01
+110 10
+111 11
+.end
+
