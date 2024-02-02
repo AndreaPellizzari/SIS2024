@@ -1,24 +1,19 @@
-.model 5gt
+.model 6gt
 .inputs a4 a3 a2 a1 a0 b4 b3 b2 b1 b0
 .outputs agtb
-
-# Dichiarazioni delle porte XOR
 .subckt xor a=a4 b=b4 x=x4
 .subckt xor a=a3 b=b3 x=x3
 .subckt xor a=a2 b=b2 x=x2
 .subckt xor a=a1 b=b1 x=x1
 .subckt xor a=a0 b=b0 x=x0
+.names a4 a3 a2 a1 a0 x4 x3 x2 x1 x0 agtb
 
-# Tavola di verità per l'operazione di confronto
-.names a4 a3 a2 a1 a0 b4 b3 b2 b1 b0 x5 x4 x3 x2 x1 x0 agtb
-1-1-1-1-1----01---- 1--1---001--- 1---1--0001-- 1----1-00001- 1-----1000001 1
+1----1---- 1
+-1---01--- 1
+--1--001-- 1
+---1-0001- 1
+----100001 1
 
-# Tavola di verità per la condizione "agtb"
-.names x5 x4 x3 x2 x1 x0 agtb
-11111 0
-1-111 0
--1-11 1
---1-1 1
----1- 1
-----1 1
------ 1
+.search xor.blif
+
+.end
