@@ -1,0 +1,7 @@
+.model datapath
+.inputs i0 i1 i2 i3 
+# (i0 e i1 -> Primo) --- (i2 e i3 -> Secondo)
+.outputs 
+
+
+.end
