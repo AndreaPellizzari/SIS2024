@@ -1,0 +1,9 @@
+.model shifter_left2
+.inputs a3 a2 a1 a0
+.outputs x3 x2 x1 x0
+.names a3 a2 a1 a0 x3 x2 x1 x0
+--00 0000
+--01 0100
+--10 1000
+--11 1100
+.end
