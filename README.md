@@ -7,7 +7,7 @@
 - Multiplexer 2 ingressi  1 bit ognuno **Fatto**
 - Multiplexer 4 ingressi 2 bit ognuno **Fatto**
 - Multiplexer 4 ingressi 1 bit ognuno **Fatto**
-- Demultiplexer 2 uscite *da sistemare*
+- Demultiplexer 2 uscite **Fatto**
 - ">" 5 bit **Fatto**
-- =
+- = 2 bit **Fatto**
 - Shifter 2 posizioni left
