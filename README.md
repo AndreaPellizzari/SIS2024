@@ -10,4 +10,4 @@
 - Demultiplexer 2 uscite **Fatto**
 - ">" 5 bit **Fatto**
 - = 2 bit **Fatto**
-- Shifter 2 posizioni left
+- Shifter 2 posizioni left **Fatto**
