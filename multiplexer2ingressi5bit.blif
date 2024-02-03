@@ -1,0 +1,19 @@
+.model multiplexer2ingressi5bit
+.inputs a0 a1 a2 a3 a4 b0 b1 b2 b3 b4 s
+.outputs o0 o1 o2 o3 o4
+.names s a4 b4 o4
+11- 1
+0-1 1
+.names s a3 b3 o3
+11- 1
+0-1 1
+.names s a2 b2 o2
+11- 1
+0-1 1
+.names s a1 b1 o1
+11- 1
+0-1 1
+.names s a0 b0 o0
+11- 1
+0-1 1
+.end
