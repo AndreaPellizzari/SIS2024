@@ -1,6 +1,6 @@
 .model fsm
-.inputs primo secondo check inizia
-.outputs manche partita inizio
+.inputs primo1 primo0 secondo1 secondo0 check inizia
+.outputs manche1 manche0 partita1 partita0 stato
 .start_kiss
 .i 6
 .o 5
