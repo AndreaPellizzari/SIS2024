@@ -93,5 +93,4 @@
 .subckt multiplexer2ingressi2bit a0=0demux2 a1=1demux2 b0=0 b1=0 s=max1 o0=primo0 o1=primo1
 
 
-
 .end
