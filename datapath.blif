@@ -2,22 +2,23 @@
 .inputs i0 i1 i2 i3 i4 i5 i6
 # (i0 e i1 -> Primo) --- (i2 e i3 -> Secondo) --- (i4 -> Stato) --- (i5 e i6 -> Manche) 
 .outputs 
+#modifica
 
 # Demux "1" che prende come input primo e come selettore stato
 .search demux2out2bit.blif
-.subckt DEMUx1-2 a0=primo1 a1=primo0 s=stato x0=0demux1 x1=1demux1 y0=2demux1 y1=3demux1
+.subckt DEMUx1-2 a0=i0 a1=i1 s=i4 x0=0demux1 x1=1demux1 y0=2demux1 y1=3demux1
 
 # Sommatore "1" 4 bit che somma 0000 al valore in entrata al demux in caso il demux "1" con input primo commuti l' uscita 1
 .search sommatore4bit.blif
 .subckt somma4bit a3=0 a2=0 a1=3demux1 a0=2demux1 b3=0 b2=0 b1=0 b0=0 cout=0 s0=0somma1 s1=1somma1 s2=2somma1 s3=3somma1
 
 # Shifter "1" che prende in input la somma tra il risultato del demux e 0000
-.search shifter2bitleft.blif
+.search shifter_left2.blif
 .subckt shifter_left2 a0=0somma1 a1=1somma1 a2=2somma2 a3=3somma3 x3=3shift1 x2=2shift1 x1=1shift1 x0=0shift1
 
 # Demux "2" che prende come input secondo e come selettore stato
 .search demux2out2bit.blif
-.subckt DEMUx1-2 a0=secondo1 a1=secondo0 s=stato x0=0demux2 x1=1demux2 y0=2demux2 y1=3demux2
+.subckt DEMUx1-2 a0=i2 a1=i3 s=i4 x0=0demux2 x1=1demux2 y0=2demux2 y1=3demux2
 
 # Sommatore "2" 4 bit che prende in input il risultato dello shifter "1" e il risultato del demux "2" in caso esso commuti l' uscita 1
 .search sommatore5bit.blif
@@ -25,7 +26,7 @@
 
 # Mux "1" che prende in input il risultato del sommatore "2" e il risultato del valore del registro nump
 .search multiplexer2ingressi5bit.blif
-.subckt multiplexer2ingressi5bit a0=2somma2 a1=3somma2 a2=0somma2 a3=1somma2 a4=4somma2 b0=0reg1 b1=1reg1 b2=2reg1 b3=3reg1 b4=4reg1 s=stato o0=0mux1 o1=1mux1 o2=2mux1 o3=3mux1 o4=4mux1
+.subckt multiplexer2ingressi5bit a0=2somma2 a1=3somma2 a2=0somma2 a3=1somma2 a4=4somma2 b0=0reg1 b1=1reg1 b2=2reg1 b3=3reg1 b4=4reg1 s=i4 o0=0mux1 o1=1mux1 o2=2mux1 o3=3mux1 o4=4mux1
 
 # Registro "num_p" a 5 bit
 .search registro5.blif
@@ -37,19 +38,19 @@
  
 # Mux "3" che prende in input (statico) 00 e manche 
 .search multiplexer2ingressi2bit.blif
-.subckt multiplexer2ingressi2bit a0=0 a1=0 b0=check b1=manche s=stato o0=0mux3 o1=1mux3
+.subckt multiplexer2ingressi2bit a0=0 a1=0 b0=i5 b1=i6 s=i4 o0=0mux3 o1=1mux3
 
 # Registro "ultimo_vincitore" a 2 bit
 .search registro2.blif
 .subckt registro2 a0=0mux3 a1=1mux3 o0=0reg2 o1=1reg2
 
 # Mux "4" che prende in input 4 ingressi da 2 bit e restituisce un output che entrera in un mux da 2 ingressi da 2 bit, e prende come selettore manche
-.search multiplexer4ingressi2bit.blif
-.subckt multiplexer4ingressi2bit x0=check x1=manche a0=0demux1 a1=1demux1 b0=0demux2 b1=1demux2 c0=0 c1=0 d0=0reg3 d1=1reg3 o0=0mux4 o1=1mux4
+.search multiplexer4ingressi2bit
+.subckt multiplexer4ingressi2bit x0=i5 x1=i6 a0=0demux1 a1=1demux1 b0=0demux2 b1=1demux2 c0=0 c1=0 d0=0reg3 d1=1reg3 o0=0mux4 o1=1mux4
 
 # Mux "5" che prende in input l' uscita commutata dal mux "4" e un input statico 00, e prende come selettore stato
-.search multiplexer2ingressi2bit.blif
-.subckt multiplexer2ingressi2bit a0=0mux4 a1=1mux4 b0=0 b1=0 s=stato o0=0mux5 o1=1mux5
+.search multiplexer2ingressi2bit
+.subckt multiplexer2ingressi2bit a0=0mux4 a1=1mux4 b0=0 b1=0 s=i4 o0=0mux5 o1=1mux5
 
 # Registro "ultima_mossa" a 2 bit
 .search registro2.blif
@@ -60,7 +61,7 @@
 .subckt comparatore2bit a0=0reg3 a1=1reg3 b0=0mux2 b1=1mux2 O=comp1
 
 # Mux "6" che prende in input il valore di output del demux "1" e un input statico 00, e come selettore il valore dell' output del comparatore
-.search multiplexer2ingressi2bit.blif
+.search multiplexer2ingressi2bit
 .subckt multiplexer2ingressi2bit a0=0demux1 a1=1demux1 b0=0 b1=0 s=comp1 o0=0mux6 o1=1mux6
 
 # Comparatore di maggioranza che verifica se il valore del registro "i" e maggiore del valore del registro "num_p"
@@ -69,7 +70,7 @@
 
 # Demux "3" che prende in input il valore del risultato del sommatore e un input statico 00001
 .search multiplexer2ingressi5bit.blif
-.subckt multiplexer2ingressi5bit a0=0 a1=0 a2=0 a3=0 a4=1 b0 b1 b2 b3 b4 s=stato o0=0demux3 o1=1demux3 o2=2demux3 o3=3demux3 o4=4demux3
+.subckt multiplexer2ingressi5bit a0=0 a1=0 a2=0 a3=0 a4=1 b0 b1 b2 b3 b4 s=i4 o0=0demux3 o1=1demux3 o2=2demux3 o3=3demux3 o4=4demux3
 
 # Registro "i" che prende in input il valore del demux "3"
 .search registro5.blif
@@ -91,5 +92,7 @@
 # Mux "8" che prende in input il valore del demux "2" se commuta 0 in uscita ed un input statico 00
 .search multiplexer2ingressi2bit.blif
 .subckt multiplexer2ingressi2bit a0=0demux2 a1=1demux2 b0=0 b1=0 s=max1 o0=primo0 o1=primo1
+
+
 
 .end
