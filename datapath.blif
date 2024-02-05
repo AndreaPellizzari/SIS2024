@@ -1,4 +1,7 @@
 .model datapath
+.inputs i0 i1 i2 i3 i4 i5 i6
+# (i0 e i1 -> Primo) --- (i2 e i3 -> Secondo) --- (i4 -> Stato) --- (i5 e i6 -> Manche) 
+.outputs 
 .inputs primo1 primo0 secondo1 secondo0 manche1 manche0 stato
 # (primo1 e primo0 -> Primo) --- (secondo1 e secondo0 -> Secondo) --- (stato -> Stato) --- (manche[1] e manche[0] -> Manche) 
 #primo1 = primo[1], primo0 = primo[0]
@@ -91,6 +94,6 @@
 
 # Mux "8" che prende in input il valore del demux "2" se commuta 0 in uscita ed un input statico 00
 .search multiplexer2ingressi2bit.blif
-.subckt multiplexer2ingressi2bit a0=0demux2 a1=1demux2 b0=0 b1=0 s=max1 o0=primo0 o1=primo1
+.subckt multiplexer2ingressi2bit a0=0demux2 a1=1demux2 b0=0 b1=0 s=max1 o0=primo0 o1=primo1
 
 .end
