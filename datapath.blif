@@ -2,6 +2,7 @@
 .inputs i0 i1 i2 i3 i4 i5 i6
 # (i0 e i1 -> Primo) --- (i2 e i3 -> Secondo) --- (i4 -> Stato) --- (i5 e i6 -> Manche) 
 .outputs 
+#modifica
 
 # Demux "1" che prende come input primo e come selettore stato
 .search demux2out2bit.blif
