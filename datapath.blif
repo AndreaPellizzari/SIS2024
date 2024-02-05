@@ -1,5 +1,5 @@
 .model datapath
-.inputs primo1 primo0 secondo1 secondo0 stato manche1 manche0
+.inputs primo1 primo0 secondo1 secondo0 manche1 manche0 stato
 # (primo1 e primo0 -> Primo) --- (secondo1 e secondo0 -> Secondo) --- (stato -> Stato) --- (manche[1] e manche[0] -> Manche) 
 #primo1 = primo[1], primo0 = primo[0]
 .outputs primopass1 primopass0 secondopass1 secondopass0 check
