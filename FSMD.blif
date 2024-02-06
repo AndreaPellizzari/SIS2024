@@ -2,7 +2,7 @@
 .inputs primo1 primo0 secondo1 secondo0 inizia
 .outputs manche1 manche0 partita1 partita0
 
-.subckt datapath primo1=i0 primo0=i1 secondo1=i2 secondo0=i3 stato=i4 manche1=i5 manche0=i6
+.subckt datapath i0=primo1 i1=primo0 i2=secondo1 i3=secondo0 i4=stato i5=manche1 i6=manche0
 .subckt fsm primo1=primo1 primo0=primo0 secondo1=secondo0 check=check inizia=inizia manche1=manche1 manche0=manche0 partita1=partita1 stato=stato
 
 .search fsm.blif
