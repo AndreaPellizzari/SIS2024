@@ -1,6 +1,6 @@
 .model fsmd_system
 .inputs primo1 primo0 secondo1 secondo0 inizia
-.outputs manche partita
+.outputs manche1 manche0 partita1 partita0
 
 .subckt datapath primo1=primo1 primo0=primo0 secondo1=secondo0 stato=stato check=check manche1=manche1 manche0=manche0
 .subckt fsm primo1=primo1 primo0=primo0 secondo1=secondo0 check=check inizia=inizia manche1=manche1 manche0=manche0 partita1=partita1 stato=stato
