@@ -1,0 +1,56 @@
+.model datapath
+.inputs primo1 primo0 secondo1 secondo0 stato manche1 manche0
+.outputs primopass1 primopass2 secondopass1 secondopass0 check
+
+
+# Search dei vari componenti
+.search uno.blif
+.search zero.blif
+.search demux2out2bit.blif
+.search sommatore_primo_secondo.blif
+.search registro5.blif
+.search multiplexer2ingressi5bit.blif
+.search multiplexer2ingressi2bit.blif
+.search multiplexer4ingressi2bit.blif
+.search registro2.blif
+
+
+
+# Componente che restituisce 1
+.subckt uno o=uno
+
+# Componente che restituisce 0
+.subckt zero o=zero
+
+# Demux '0', instradamento di primo in base allo stato
+.subckt demux1-2 a1=primo1 a0=primo0 s=stato x1=x1demux0 x0=x0demux0 y1=1demux0 y0=y0demux0
+
+# Demux '1', instradamento di secondo in base allo stato
+.subckt demux1-2 a1=secondo1 a0=secondo0 s=stato x1=x1demux1 x0=x0demux1 y1=1demux1 y0=y0demux1
+
+# Sommatore Primo e Secondo, '0' prende gli ingressi x*
+.subckt sommatore_primo_secondo primo1=x1demux0 primo0=x0demux0 secondo1=x1demux1 secondo0=x0demux1 x4=4sum0 x3=3sum0 x2=2sum0 x1=1sum0 x0=0sum0
+
+# Mux '0', sceglie come popolare in base allo stato il registro MaxP.
+.subckt multiplexer2ingressi5bit s=stato a4=4reg0 a3=3reg0 a2=2reg0 a1=1reg0 a0=0reg0 b4=4sum0 b3=3sum0 b2=2sum0 b1=1sum0 b0=0sum0 o4=4mux0 o3=3mux0 o2=2mux0 o1=1mux0 o0=0mux0
+
+# Reg '0', registro a 5 bit che memorizzerà MaxP, prende come ingresso *sum0.
+.subckt registro5 a4=4mux0 a3=3mux0 a2=2mux0 a1=1mux0 a0=0mux0 o4=4reg0 o3=3reg0 o2=2reg0 o1=1reg0 o0=0reg0
+
+## Istanza Registro 'ultimo vincitore'
+# Mux '1', popola ultimo vincitore in base allo stato
+.subckt multiplexer2ingressi2bit s=stato a1=manche1 a0=manche0 b1=zero b0=zero o1=1mux1 o0=0mux1 
+
+# Reg '1', registro 2 bit memorizza 'Ultimo vincitore', popolato da *mux1.
+.subckt registro2 a1=1mux1 a0=0mux1 o1=1reg1 o0=0reg1
+
+## Istanza Registro 'ultima mossa'
+# Mux '2', Sceglie con che mossa popolare il registro 'ultima mossa'
+.subckt multiplexer4ingressi2bit s1=manche1 s0=manche0 a1=zero a0=zero b1=1demux0 b0=0demux0 c1=1demux1 c0=0demux1 d1=1reg2 d0=0reg2 o1=1mux2 o0=0mux2
+
+# Mux '3' Sceglie se resettare o meno il registro 'ultima mossa'.
+.subckt multiplexer2ingressi2bit a1=1mux2 a0=0mux2 b1=zero b0=zero o1=1mux3 o0=0mux3
+
+# Registro '2', registro a 2 bit per memorizzare 'ultima mossa'
+.subckt registro2 a1=1mux3 a0=0mux3 o1=1reg2 o0=0reg2
+.end

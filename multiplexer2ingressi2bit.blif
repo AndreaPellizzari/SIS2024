@@ -1,6 +1,7 @@
 .model multiplexer2ingressi2bit
 .inputs a0 a1 b0 b1 s
 .outputs o0 o1
+# Se s = 0 esce b, Se s = 1 esce a.
 .names s a0 b0 o0
 11- 1
 0-1 1
