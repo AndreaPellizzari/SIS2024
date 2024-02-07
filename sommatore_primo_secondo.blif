@@ -1,5 +1,5 @@
 .model sommatore_primo_secondo
-.inputs primo1 primo0 secondo1 secondo0
+.inputs k1 k0 j1 j0
 .outputs x4 x3 x2 x1 x0
 
 .search uno.blif
@@ -15,13 +15,13 @@
 .subckt zero o=zero
 
 # Sommatore '0', sommatore a 4 bit per rendere primo di lunghezza 4 bit
-.subckt somma4bit a3=zero a2=zero a1=primo1 a0=primo0 b3=zero b2=zero b1=zero b0=zero cout=cout0 s3=3somma0 s2=2somma0 s1=1somma0 s0=0somma0
+.subckt somma4bit a3=zero a2=zero a1=k1 a0=k0 b3=zero b2=zero b1=zero b0=zero cout=cout0 s3=3somma0 s2=2somma0 s1=1somma0 s0=0somma0
 
 # Shifter '0name', sposta primo nelle posizioni 3 e 4
 .subckt shifter_left2 a3=3somma0 a2=2somma0 a1=1somma0 a0=0somma0 x3=3shift0 x2=2shift0 x1=1shift0 x0=0shift0
 
 # Somma '1', somma 4 bit tra primo e secondo
-.subckt somma4bit a3=3shift0 a2=2shift0 a1=1shift0 a0=0shift0 b3=zero b2=zero b1=secondo1 b0=secondo0 cout=cout1 s3=3somma1 s2=2somma1 s1=1somma1 s0=0somma1
+.subckt somma4bit a3=3shift0 a2=2shift0 a1=1shift0 a0=0shift0 b3=zero b2=zero b1=j1 b0=j0 cout=cout1 s3=3somma1 s2=2somma1 s1=1somma1 s0=0somma1
 
 # Somma '2', somma 5 bit tra primo+secondo e 4 binario
 .subckt somma5bit a4=zero a3=3somma1 a2=2somma1 a1=1somma1 a0=0somma1 b4=zero b3=zero b2=uno b1=zero b0=zero cout=cout2 s4=x4 s3=x3 s2=x2 s1=x1 s0=x0
