@@ -69,7 +69,7 @@
 .subckt registro5 a4=4mux6 a3=3mux6 a2=2mux6 a1=1mux6 a0=0mux6 o4=4reg3 o3=3reg3 o2=2reg3 o1=1reg3 o0=0reg3
 
 # Sommatore '1', se la mossa è valida, incrementa la I.
-.subckt somma5bit a4=4reg3 a3=3reg3 a2=2reg3 a1=1reg3 a0=0reg3 b4=zero b3=zero b2=zero b1=zero b0=uno cout=cout1 s4=4sum1 s3=3sum1 s2=2sum1 s1=1sum1 s0=0sum1
+.subckt somma5bit a4=4reg3 a3=3reg3 a2=2reg3 a1=1reg3 a0=0reg3 b4=zero b3=zero b2=zero b1=zero b0=uno cout=cout4 s4=4sum1 s3=3sum1 s2=2sum1 s1=1sum1 s0=0sum1
 
 # Mux '7', sceglie se tenere la i incrementata oppure quella non incrementata
 .subckt multiplexer2ingressi5bit s=comparatore a4=4reg3 a3=3reg3 a2=2reg3 a1=1reg3 a0=0reg3 b4=4sum1 b3=3sum1 b2=2sum1 b1=1sum1 b0=0sum1 o4=4mux7 o3=3mux7 o2=2mux7 o1=1mux7 o0=0mux7
