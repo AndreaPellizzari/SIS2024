@@ -1,6 +1,7 @@
-.model DEMUx1-2
+.model demux1-2
 .inputs a1 a0 s
 .outputs x1 x0 y1 y0
+# Se s = 0 esce x, Se s = 1 esce y,
 .names a1 a0 s x1
 100 1
 110 1

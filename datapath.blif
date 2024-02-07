@@ -84,7 +84,7 @@
 
 # Registro "i" che prende in input il valore del demux "3"
 .search registro5.blif
-.subckt registro5 a0=0demux3 a1=1demux3 a2=2demux3 a3=3demux3 a4=4demux3 o0=0reg4 o1=1reg4 o2=2reg4 o3=3reg4 o4=4reg4  
+.subckt registro5 a0=0demux3 a1=1demux3 a2=2demux3 a3=3demux3 a4=4demux3 o0=0reg4 o1=1reg4 o2=2reg4 o3=3reg4 o4=4reg4
 
 # Demux "4" che prende in input il valore del registro i
 .search demux2out5bit.blif
