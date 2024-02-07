@@ -1,11 +1,11 @@
 .model fsmd_system
-.inputs primo1 primo0 secondo1 secondo0 inizia
-.outputs manche1 manche0 partita1 partita0
-
+.inputs in_primo1 in_primo0 in_secondo1 in_secondo0 in_inizia
+#.outputs manche1 manche0 partita1 partita0 stato check primopass1
+.outputs out_manche1 out_manche0 out_partita1 out_partita0
 .search datapath_v2.blif
 .search fsm.blif
 
-.subckt datapath primo1=primo1 primo0=primo0 secondo1=secondo1 secondo0=secondo0 stato=stato manche1=manche1 manche0=manche0 check=check primopass1=primopass1 primopass0=primopass0 secondopass1=secondopass1 secondopass0=secondopass0
-.subckt fsm primo1=primopass1 primo0=primopass0 secondo1=secondopass1 secondo0=secondopass0 check=check inizia=inizia manche1=manche1 manche0=manche0 partita1=partita1 partita0=partita0 stato=stato
+.subckt datapath primo1=in_primo1 primo0=in_primo0 secondo1=in_secondo1 secondo0=in_secondo0 stato=out_stato manche1=out_manche1 manche0=out_manche0 check=out_check primopass1=out_primopass1 primopass0=out_primopass0 secondopass1=out_secondopass1 secondopass0=out_secondopass0
+.subckt fsm primo1=out_primopass1 primo0=out_primopass0 secondo1=out_secondopass1 secondo0=out_secondopass0 check=out_check inizia=in_inizia manche1=out_manche1 manche0=out_manche0 partita1=out_partita1 partita0=out_partita0 stato=out_stato
 
 .end
