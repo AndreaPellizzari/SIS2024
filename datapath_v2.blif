@@ -1,6 +1,6 @@
 .model datapath
 .inputs primo1 primo0 secondo1 secondo0 stato manche1 manche0
-.outputs primopass1 primopass0 secondopass1 secondopass0 check 1reg2 0reg2
+.outputs primopass1 primopass0 secondopass1 secondopass0 check 1reg2 0reg2 comparatore
 
 # Search dei vari componenti
 .search uno.blif
@@ -43,6 +43,13 @@
 # Reg '1', registro 2 bit memorizza 'Ultimo vincitore', popolato da *mux1.
 .subckt registro2 a1=1mux1 a0=0mux1 o1=1reg1 o0=0reg1
 
+# Reg '11', memorizza lastmossa primo
+.subckt registro2 a1=y1demux0 a0=y1demux0 o1=1reg11 o0=0reg11
+
+
+# Reg '12', memorizza lastmossa secondo
+.subckt registro2 a1=y1demux1 a0=y1demux1 o1=1reg12 o0=0reg12
+
 ## Istanza Registro 'ultima mossa'
 # Mux '2', Sceglie con che mossa popolare il registro 'ultima mossa'
 .subckt multiplexer4ingressi2bit s1=manche1 s0=manche0 a1=zero a0=zero b1=y1demux0 b0=y0demux0 c1=y1demux1 c0=y0demux1 d1=1reg2 d0=0reg2 o1=1mux2 o0=0mux2
@@ -54,7 +61,7 @@
 .subckt registro2 a1=1mux3 a0=0mux3 o1=1reg2 o0=0reg2
 
 # Mux '4', prende in input primo e secondo, in base alla vittoria dell'ultimo giocatore decide cosa far passare
-.subckt multiplexer4ingressi2bit s1=1reg1 s0=0reg1 b1=y1demux0 b0=y0demux0 c1=y1demux1 c0=y0demux1 a1=y1demux0 a0=y0demux0 d1=y1demux0 d0=y0demux0 o1=1mux4 o0=0mux4
+.subckt multiplexer4ingressi2bit s1=1reg1 s0=0reg1 b1=y1demux0 b0=y0demux0 c1=y1demux1 c0=y0demux1 a1=y1demux0 a0=y0demux0 d1=zero d0=zero o1=1mux4 o0=0mux4
 
 # Comparatore '0', compara l'ultima mossa vincente con quella attuale del vincitore precedente.
 .subckt comparatore2bit a1=1mux4 a0=0mux4 b1=1reg2 b0=0reg2 O=comparatore
