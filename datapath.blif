@@ -22,10 +22,10 @@
 # Componente che restituisce 0
 .subckt zero o=zero
 
-# Reg "02" stato
+# Reg "02" stato, memorizza stato
 .subckt registro a=stato o=regstato 
 
-# Reg "03" manche 
+# Reg "03" manche memorizza manche
 .subckt registro2 a1=manche1 a0=manche0 o1=regmanche1 o0=regmanche0 
 
 # Demux '0', instradamento di primo in base allo stato
