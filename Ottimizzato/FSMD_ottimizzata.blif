@@ -1,0 +1,229 @@
+.model fsmd_system
+.inputs in_primo1 in_primo0 in_secondo1 in_secondo0 in_inizia
+.outputs out_manche1 out_manche0 out_partita1 out_partita0
+.latch    [16] LatchOut_v6   0
+.latch    [17] LatchOut_v7   0
+.latch    [18] LatchOut_v8   0
+.latch    out_stato regstato re NIL 0
+.latch    out_manche1 regmanche1 re NIL 0
+.latch    out_manche0 regmanche0 re NIL 0
+.latch    y1demux0 1reg11 re NIL 0
+.latch    y0demux0 0reg11 re NIL 0
+.latch    y1demux1 1reg12 re NIL 0
+.latch    y0demux1 0reg12 re NIL 0
+.latch    4mux0 4reg0 re NIL 0
+.latch    3mux0 3reg0 re NIL 0
+.latch    2mux0 2reg0 re NIL 0
+.latch    1mux0 1reg0 re NIL 0
+.latch    0mux0 0reg0 re NIL 0
+.latch    4mux6 4reg3 re NIL 0
+.latch    3mux6 3reg3 re NIL 0
+.latch    2mux6 2reg3 re NIL 0
+.latch    1mux6 1reg3 re NIL 0
+.latch    0mux6 0reg3 re NIL 0
+.names in_inizia outprimopass1 outprimopass0 out_secondopass1 out_secondopass0 \
+[301] [314] out_manche1
+-0---11 1
+0-1011- 1
+01-1-10 1
+.names in_inizia out_manche1 outprimopass1 [299] [301] [303] [305] [314] [315] \
+[325] out_manche0
+-1-------1 1
+-0--1-1--- 1
+0--01--0-- 1
+--1-11--1- 1
+.names out_partita0 outprimopass1 LatchOut_v7 LatchOut_v8 [16] [299] [302] \
+[305] [307] [311] [314] [315] [324] [325] [334] out_partita1
+1--0----------- 1
+----0---01----- 1
+1--------1-0--- 1
+---00----01---- 1
+---001-1-0----- 1
+--00-0-111----- 1
+--00----11---11 1
+-100--1-11--1-- 1
+.names in_inizia out_check outprimopass1 outprimopass0 out_secondopass1 \
+LatchOut_v7 LatchOut_v8 [16] [299] [303] [304] [305] [311] out_partita0
+-------0--0-1 1
+-1----10----1 1
+----00-0---10 1
+--000--0-11-- 1
+0----0-00--00 1
+.names in_inizia out_stato
+0 1
+.names 4reg3 3reg3 2reg3 out_check
+1-- 1
+-1- 1
+--1 1
+.names in_primo1 0magg comparatore outprimopass1
+100 1
+.names in_primo0 0magg comparatore outprimopass0
+100 1
+.names 0magg in_secondo1 out_secondopass1
+01 1
+.names 0magg in_secondo0 out_secondopass0
+01 1
+.names in_inizia outprimopass1 outprimopass0 out_secondopass1 LatchOut_v8 \
+[296] [299] [304] [305] [311] [314] [315] [323] [324] [325] [334] [16]
+0---00---------- 1
+------0-11------ 1
+-1--0-----1----- 1
+-------0-1-1---- 1
+-1-------1-0---- 1
+-0--------1-1--- 1
+--------1---11-- 1
+-0-------1-----1 1
+--------1---1--1 1
+--000---1------- 1
+--0-----01-1---- 1
+0---0-0-------1- 1
+.names in_inizia out_manche1 out_partita0 LatchOut_v7 [311] [316] [17]
+--1--- 1
+-1-1-- 1
+0--1-1 1
+-1--11 1
+.names in_inizia out_manche1 out_manche0 out_partita1 LatchOut_v6 LatchOut_v8 \
+[17] [316] [323] [18]
+---1----- 1
+-------0- 1
+0-------1 1
+-01-1---- 1
+-0---11-- 1
+.names 4reg3 3reg3 2reg3 1reg3 0reg3 2reg0 1reg0 0reg0 x4 x3 0magg
+1-------1- 1
+-1------01 1
+--1--0--00 1
+--11--0-00 1
+---1-00-00 1
+--111--000 1
+---110-000 1
+--1-1-0000 1
+----100000 1
+.names in_primo1 regstato y1demux0
+11 1
+.names in_primo0 regstato y0demux0
+11 1
+.names in_secondo1 regstato y1demux1
+11 1
+.names in_secondo0 regstato y0demux1
+11 1
+.names in_primo1 in_primo0 regstato 4reg0 4mux0
+--11 1
+110- 1
+.names in_primo1 in_primo0 regstato 3reg0 3mux0
+--11 1
+010- 1
+100- 1
+.names in_primo0 regstato 2reg0 2mux0
+00- 1
+-11 1
+.names in_secondo1 regstato 1reg0 1mux0
+10- 1
+-11 1
+.names in_secondo0 regstato 0reg0 0mux0
+10- 1
+-11 1
+.names regmanche1 regmanche0 1reg11 1reg12 1mux2
+11-- 1
+-11- 1
+1--1 1
+.names y1demux0 y1demux1 regmanche1 regmanche0 [329] 1mux4
+----1 1
+1-0-- 1
+-1-0- 1
+.names y0demux0 y0demux1 regmanche1 regmanche0 [329] 0mux4
+----1 1
+1-0-- 1
+-1-0- 1
+.names regmanche0 1mux2 1mux4 0mux4 [312] [313] comparatore
+-1100- 1
+-0000- 1
+-111-0 1
+-001-0 1
+11111- 1
+10011- 1
+0110-1 1
+0000-1 1
+.names 4reg3 3reg3 regstato 3mux6 0mux6 4mux6
+1--1- 1
+101-- 1
+01-00 1
+.names 3reg3 2reg3 regstato 2mux6 0mux6 3mux6
+1--1- 1
+101-- 1
+01-00 1
+.names 2reg3 regstato [321] 2mux6
+111 1
+010 1
+.names 1reg3 regstato comparatore 0mux6 [306] 1mux6
+0-00- 1
+11--1 1
+.names 0reg3 regstato comparatore 0mux6
+-0- 1
+1-1 1
+0-0 1
+.names 4reg3 4reg0 x4
+01 1
+10 1
+.names 3reg3 3reg0 x3
+01 1
+10 1
+.names LatchOut_v6 LatchOut_v7 LatchOut_v8 [296]
+1-1 1
+-10 1
+.names out_check LatchOut_v6 [296] [298]
+--1 1
+01- 1
+.names outprimopass0 out_secondopass1 [299]
+0- 1
+-0 1
+.names [298] [323] [301]
+1- 1
+-1 1
+.names outprimopass1 out_secondopass0 [302]
+0- 1
+-0 1
+.names in_inizia out_secondopass0 [303]
+00 1
+.names LatchOut_v7 LatchOut_v8 [304]
+0- 1
+-0 1
+.names in_inizia [302] [305]
+00 1
+.names 0reg3 comparatore [306]
+0- 1
+-1 1
+.names out_check LatchOut_v8 [307]
+0- 1
+-1 1
+.names in_inizia LatchOut_v6 [311]
+01 1
+.names regmanche1 0reg11 [312]
+1- 1
+-1 1
+.names regmanche1 0reg12 [313]
+0- 1
+-0 1
+.names [299] [303] [314]
+01 1
+.names out_secondopass1 out_secondopass0 [315]
+1- 1
+-1 1
+.names out_manche0 LatchOut_v8 [316]
+0- 1
+-0 1
+.names 1reg3 [306] [321]
+0- 1
+-1 1
+.names LatchOut_v7 LatchOut_v8 [323]
+01 1
+.names outprimopass0 out_secondopass1 [324]
+01 1
+.names outprimopass1 out_secondopass0 [325]
+01 1
+.names regstato regmanche1 regmanche0 [329]
+0-- 1
+-00 1
+.names outprimopass0 out_secondopass1 [334]
+10 1
+.end
