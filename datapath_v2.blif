@@ -1,6 +1,6 @@
 .model datapath
 .inputs primo1 primo0 secondo1 secondo0 stato manche1 manche0
-.outputs primopass1 primopass0 secondopass1 secondopass0 check
+.outputs primopass1 primopass0 secondopass1 secondopass0 check comparatore
 
 # Search dei vari componenti
 .search uno.blif
@@ -56,7 +56,7 @@
 
 ## Istanza Registro 'ultima mossa'
 # Mux '2', Sceglie con che mossa popolare il registro 'ultima mossa'
-.subckt multiplexer4ingressi2bit s1=manche1 s0=manche0 a1=zero a0=zero b1=y1demux0 b0=y0demux0 c1=y1demux1 c0=y0demux1 d1=1reg2 d0=0reg2 o1=1mux2 o0=0mux2
+.subckt multiplexer4ingressi2bit s1=manche1 s0=manche0 a1=zero a0=zero b1=1reg11 b0=0reg11 c1=1reg12 c0=0reg12 d1=1reg2 d0=0reg2 o1=1mux2 o0=0mux2
 
 # Mux '3' Sceglie se resettare o meno il registro 'ultima mossa'.
 .subckt multiplexer2ingressi2bit s=regstato a1=1mux2 a0=0mux2 b1=zero b0=zero o1=1mux3 o0=0mux3
