@@ -1,0 +1,7 @@
+.model multiplexer2ingressi1bit
+.inputs a0 b0 s
+.outputs o0
+.names s a0 b0 o0
+11- 1
+0-1 1
+.end
